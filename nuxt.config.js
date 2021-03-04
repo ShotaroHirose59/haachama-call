@@ -2,16 +2,57 @@ import colors from 'vuetify/es5/util/colors'
 
 export default {
   // Target: https://go.nuxtjs.dev/config-target
-  target: 'static',
+  ssr: false,
   srcDir: 'src/',
   // Global page headers: https://go.nuxtjs.dev/config-head
   head: {
-    titleTemplate: '%s - haachama-call',
-    title: 'haachama-call',
+    titleTemplate: '%s - はあちゃまコール',
+    title: 'はあちゃまコール',
     meta: [
       { charset: 'utf-8' },
       { name: 'viewport', content: 'width=device-width, initial-scale=1' },
-      { hid: 'description', name: 'description', content: '' },
+      {
+        name: 'keywords',
+        content: 'はあちゃま,赤井はあと,はあちゃまホラー,アプリ',
+      },
+      {
+        hid: 'description',
+        name: 'description',
+        content: 'はあちゃまからの着信を体験しよう',
+      },
+      {
+        hid: 'twitter:card',
+        name: 'twitter:card',
+        content: 'summary',
+      },
+      { hid: 'twitter:site', name: 'twitter:site', content: '@destino591211' },
+      { hid: 'og:type', property: 'og:type', content: 'website' },
+      {
+        hid: 'og:title',
+        property: 'og:title',
+        content: 'はあちゃまコール',
+      },
+      {
+        hid: 'og:url',
+        property: 'og:url',
+        content: 'https://haachama-call.web.app',
+      },
+      {
+        hid: 'og:description',
+        property: 'og:description',
+        content: 'はあちゃまコール！ はあちゃまからの着信を体験しよう',
+      },
+      {
+        hid: 'og:image',
+        property: 'og:image',
+        content: 'https://haachama-call.web.app/ogp.png',
+      },
+      { name: 'twitter:card', content: 'summary_large_image' }, // twitterの画像サイズ
+      {
+        hid: 'og:site_name',
+        name: 'og:site_name',
+        content: 'はあちゃまコール！',
+      },
     ],
     link: [{ rel: 'icon', type: 'image/x-icon', href: '/favicon.ico' }],
   },
@@ -37,13 +78,31 @@ export default {
   modules: [
     // https://go.nuxtjs.dev/pwa
     '@nuxtjs/pwa',
+    '@nuxtjs/google-analytics',
   ],
+  googleAnalytics: {
+    id: 'G-F13BZJEJHQ',
+  },
 
   // PWA module configuration: https://go.nuxtjs.dev/pwa
   pwa: {
-    manifest: {
-      lang: 'en',
-    },
+    icon: false,
+  },
+
+  manifest: {
+    name: 'はあちゃまコール',
+    short_name: 'はあちゃまコール',
+    title: 'はあちゃまコール',
+    'og:title': 'はあちゃまコール',
+    description: 'はあちゃまからの着信を体験しよう',
+    'og:description': 'はあちゃまからの着信を体験しよう',
+    lang: 'ja',
+    theme_color: '#000000',
+    background_color: '#000000',
+    display: 'standalone',
+    scope: '/',
+    start_url: '/',
+    orientation: 'portrait',
   },
 
   // Vuetify module configuration: https://go.nuxtjs.dev/config-vuetify
@@ -66,5 +125,13 @@ export default {
   },
 
   // Build Configuration: https://go.nuxtjs.dev/config-build
-  build: {},
+  build: {
+    extend(config, { isDev, isClient }) {
+      config.module.rules.push({
+        test: /\.(ogg|mp3|wav|mpe?g)$/i,
+        use: 'file-loader',
+        exclude: /(node_modules)/,
+      })
+    },
+  },
 }
