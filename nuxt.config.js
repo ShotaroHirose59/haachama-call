@@ -79,10 +79,12 @@ export default {
     // https://go.nuxtjs.dev/pwa
     '@nuxtjs/pwa',
     '@nuxtjs/google-analytics',
+    '@nuxtjs/google-gtag',
+    ['@nuxtjs/google-gtag', {
+      id: 'G-LG8DV60Q1G',
+      debug: false
+    }]
   ],
-  googleAnalytics: {
-    id: 'G-F13BZJEJHQ',
-  },
 
   // PWA module configuration: https://go.nuxtjs.dev/pwa
   pwa: {
