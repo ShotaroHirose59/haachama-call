@@ -8,11 +8,7 @@
     <h3 style="color: #bdbdbd; margin-top: 8px">泣いても逃げても</h3>
     <h3 style="color: #bdbdbd">むーだむだ</h3>
     <v-col style="margin-top: 16px">
-      <v-btn
-        fab
-        style="margin-right: 8px; background-color: #ff1744"
-        @click="stopC()"
-      >
+      <v-btn fab style="margin-right: 8px; background-color: #ff1744">
         <v-icon color="white">mdi-close</v-icon>
       </v-btn>
       <v-btn fab style="margin-left: 8px; background-color: #00bfa5">
@@ -28,11 +24,6 @@ import ChamaImg from '@/components/call/ChamaImg'
 export default {
   components: {
     ChamaImg,
-  },
-  methods: {
-    stopC() {
-      this.$emit('stop-c')
-    },
   },
 }
 </script>

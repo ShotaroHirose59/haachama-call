@@ -8,11 +8,7 @@
     <h3 style="color: #bdbdbd; margin-top: 8px">HAACHAMA</h3>
     <h3 style="color: #bdbdbd">着信中...</h3>
     <v-col style="margin-top: 16px">
-      <v-btn
-        fab
-        style="margin-right: 8px; background-color: #ff1744"
-        @click="stopB()"
-      >
+      <v-btn fab style="margin-right: 8px; background-color: #ff1744">
         <v-icon color="white">mdi-close</v-icon>
       </v-btn>
       <v-btn
@@ -36,9 +32,6 @@ export default {
   methods: {
     PrepareC() {
       this.$emit('prepare-c')
-    },
-    stopB() {
-      this.$emit('stop-b')
     },
   },
 }
